@@ -2,18 +2,18 @@ import React from "react";
 import Profile from "./components/Profile";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Portrait from "./components/Portrait";
 import "./index.css";
+import About from "./components/About";
 
-const App = () => {
+function App() {
   return (
     <div className="app">
       <Navbar />
-      <Portrait />
       <Profile />
+      <About />
       <Footer />
     </div>
   );
-};
+}
 
 export default App;
