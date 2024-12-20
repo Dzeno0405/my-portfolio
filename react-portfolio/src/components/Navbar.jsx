@@ -1,18 +1,38 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-function Navbar () {
+function Navbar() {
   return (
     <nav className="navbar">
       <ul>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/skills">Skills</Link></li>
-        <li><Link to="/future">Future</Link></li>
-        <li><Link to="/projects">Projects</Link></li>
-        <li><Link to="/socials">Socials</Link></li>
+        <li>
+          <NavLink to="/" className={({ isActive }) => (isActive ? "active-link" : "")}>
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/about" className={({ isActive }) => (isActive ? "active-link" : "")}>
+            About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/skills" className={({ isActive }) => (isActive ? "active-link" : "")}>
+            Skills
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/future" className={({ isActive }) => (isActive ? "active-link" : "")}>
+            Future
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/projects" className={({ isActive }) => (isActive ? "active-link" : "")}>
+            Projects
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
-};
+}
 
 export default Navbar;
