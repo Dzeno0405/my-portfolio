@@ -28,7 +28,7 @@ function ProfilePortrait() {
       <div className="popups">
         {showWelcome && (
           <div className={`profile ${showWelcome ? "landed" : ""}`}>
-            <h1 className="creator-desc">Hi there</h1>
+            <h1 className="creator-desc">Hi there 😎</h1>
           </div>
         )}
         {showName && (

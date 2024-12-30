@@ -50,9 +50,9 @@ a:hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
-  width: auto;
-  width: 100%; /* add this line */
-  box-sizing: border-box; /* add this line */
+  width: 100%; /* Ensures navbar takes full width */
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .navbar ul {
@@ -71,13 +71,9 @@ a:hover {
   transition: all 0.3s ease-in-out;
   padding: 5px 10px;
   border-radius: 5px;
+  position: relative; /* Added to support ::before positioning */
 }
 
-.navbar ul li a:hover {
-  color: #50c878;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 10px #50c878, 0 0 20px #50c878;
-}
 
 .navbar ul li a::before {
   content: "";
@@ -93,10 +89,6 @@ a:hover {
   z-index: -1;
 }
 
-.navbar {
-  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
 .navbar.scrolled {
   background: #0f2027;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -106,6 +98,7 @@ a:hover {
   font-weight: bold !important;
   color: #03a9f4 !important;
 }
+
 
 /* NAVBAR STYLING END */
 
@@ -603,3 +596,272 @@ a:hover {
 
 
 /* SKILLS BAR END */
+
+/* ABOUT ME START */
+
+.about-page {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  padding: 50px;
+  border-radius: 15px;
+  max-width: 900px;
+  margin: 50px auto;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1s ease-in-out;
+  font-family: 'Roboto', sans-serif;
+}
+
+.about-page h1 {
+  font-size: 2.5rem;
+  color: #03a9f4;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
+  margin-bottom: 20px;
+}
+
+.about-page p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #d1d1d1;
+  margin-bottom: 30px;
+}
+
+.positions h2,
+.future-plans h2 {
+  font-size: 1.8rem;
+  color: #61dafb;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.positions ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.positions li {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  color: #d1d1d1;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.positions li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.positions .current-position {
+  font-weight: bold;
+  background: rgba(3, 169, 244, 0.2);
+  border: 1px solid #03a9f4;
+  color: #03a9f4;
+}
+
+.role-description {
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  color: #d1d1d1;
+  text-align: left;
+}
+
+.role-description h3 {
+  font-size: 1.5rem;
+  color: #61dafb;
+}
+
+.role-description p {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.future-plans p {
+  font-size: 1.1rem;
+  color: #d1d1d1;
+  line-height: 1.8;
+}
+
+.cv-download {
+  margin-top: 30px;
+}
+
+.download-btn {
+  background: linear-gradient(135deg, #03a9f4, #0288d1);
+  color: #ffffff;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.download-btn:hover {
+  background: linear-gradient(135deg, #0288d1, #03a9f4);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.download-btn a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+/* ABOUT ME END */
+
+
+/* FUTURE START */
+
+.future-page {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: #ffffff;
+  padding: 50px;
+  border-radius: 15px;
+  max-width: 900px;
+  margin: 50px auto;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  font-family: 'Roboto', sans-serif;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.future-page h1 {
+  font-size: 2.5rem;
+  color: #03a9f4;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
+  margin-bottom: 20px;
+}
+
+.future-page p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #d1d1d1;
+  margin-bottom: 30px;
+}
+
+.future-plans-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.future-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.future-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.future-item h2 {
+  font-size: 1.5rem;
+  color: #61dafb;
+  margin-bottom: 10px;
+}
+
+.future-item p {
+  font-size: 1.1rem;
+  color: #d1d1d1;
+  line-height: 1.8;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* FUTURE END */
+
+/* PROJECTS START */
+
+.projects-page {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.loading-overlay h1 {
+  font-size: 2.5rem;
+  color: #03a9f4;
+  margin-bottom: 20px;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
+}
+
+.loading-animation {
+  border: 5px solid #fff;
+  border-top: 5px solid #03a9f4;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* PROJECTS END */
+
