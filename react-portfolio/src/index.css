@@ -52,7 +52,7 @@ a:hover {
   justify-content: center;
   width: 100%; /* Ensures navbar takes full width */
   box-sizing: border-box; /* Ensures padding doesn't affect width */
-  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  transition: background 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .navbar ul {
