@@ -8,9 +8,11 @@
   overflow-y: hidden;
 }
 
-body {
-  overflow-x: hidden;
-  overflow-y: hidden;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling on the entire page */
 }
 
 .footer {
@@ -243,11 +245,13 @@ a:hover {
   position: relative;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   overflow: hidden;
-  max-width: 80%;
+  max-width: 80%; /* Ensures responsive width */
   margin: 0 auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: auto; /* Allow content to grow naturally */
 }
 
+/* Paragraph inside .info */
 .info p {
   font-family: "Poppins", sans-serif;
   font-size: 20px;
@@ -260,12 +264,14 @@ a:hover {
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
+/* Hover effect for .info */
 .info:hover {
   transform: scale(1.03);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 6px 30px rgba(255, 255, 255, 0.4);
   animation: glowHover 1s ease-in-out infinite alternate;
 }
 
+/* Keyframe for glowing hover effect */
 @keyframes glowHover {
   0% {
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.4);
@@ -278,7 +284,7 @@ a:hover {
   }
 }
 
-/* Fly-in Animation for the Portrait Image and Popups */
+/* Fly-in animation for Portrait Image and Popups */
 .portrait-image,
 .popups .profile,
 .popups .profile-name {
@@ -304,6 +310,33 @@ a:hover {
 .popups .profile-name {
   transition-delay: 0.2s; /* Slightly after the profile */
 }
+
+/* Responsive adjustments for smaller screens (mobile) */
+@media (max-width: 500px) {
+  .info {
+    padding: 20px; /* Less padding on small screens */
+    max-width: 90%; /* Slightly wider for mobile */
+  }
+
+  .info p {
+    font-size: 13px; /* Adjust font size */
+    letter-spacing: 0.5px; /* Reduce letter spacing */
+  }
+}
+
+@media (max-width: 360px) {
+  .info {
+    padding: 15px; /* Further reduce padding on very small screens */
+    max-width: 95%; /* Ensure the container fits better */
+  }
+
+  .info p {
+    font-size: 14px; /* Smaller font size for mobile */
+    letter-spacing: 0.3px; /* Slightly tighter letter spacing */
+    line-height: 1.4; /* Adjust line-height for readability */
+  }
+}
+
 
 
 
@@ -343,6 +376,15 @@ a:hover {
   cursor: pointer;
   animation: glowHover 1.5s ease-in-out infinite alternate;
 }
+
+/* Adjust .footer-left for screens below 360px */
+@media (max-width: 390px) {
+  .footer-left {
+    font-size: 12px; /* Reduce font size */
+    line-height: 1;
+  }
+}
+
 
 /* Keyframes for subtle pulsing glow */
 @keyframes glowHover {
