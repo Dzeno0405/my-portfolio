@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaHtml5, FaCss3Alt, FaBootstrap, FaJs, FaReact } from "react-icons/fa";
 
 const Skills = () => {
+  const [animate, setAnimate] = useState(false);
+
   const skills = [
     { name: "HTML", level: 90, icon: <FaHtml5 color="#E34F26" size={30} /> },
     { name: "CSS", level: 90, icon: <FaCss3Alt color="#1572B6" size={30} /> },
@@ -10,8 +12,13 @@ const Skills = () => {
     { name: "React", level: 45, icon: <FaReact color="#61DAFB" size={30} /> },
   ];
 
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimate(true), 100); // Small delay before animation starts
+    return () => clearTimeout(timer); // Cleanup timer on unmount
+  }, []);
+
   return (
-    <div className="skills-container">
+    <div className={`skills-container ${animate ? "animate" : ""}`}>
       <h1>Skills</h1>
       <p className="skills-intro">
         I am currently working hard to improve my skills and expand my knowledge. 
@@ -21,7 +28,11 @@ const Skills = () => {
       </p>
       <div className="skills-list">
         {skills.map((skill, index) => (
-          <div key={index} className="skill-item">
+          <div
+            key={index}
+            className={`skill-item ${animate ? "fade-in" : ""}`}
+            style={{ animationDelay: `${index * 0.2}s` }}
+          >
             <div className="skill-info">
               {skill.icon}
               <span className="skill-name">{skill.name}</span>

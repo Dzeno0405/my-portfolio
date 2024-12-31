@@ -26,17 +26,14 @@ function ProfilePortrait() {
         <img src={portrait} alt="Your Portrait" className="portrait" />
       </div>
       <div className="popups">
-        {showWelcome && (
-          <div className={`profile ${showWelcome ? "landed" : ""}`}>
-            <h1 className="creator-desc">Hi there 😎</h1>
-          </div>
-        )}
-        {showName && (
-          <div className={`profile-name ${showName ? "landed" : ""}`}>
-            <h1 className="creator-name">I am Dzenan. Welcome</h1>
-          </div>
-        )}
-      </div>
+  <div className={`profile ${showWelcome ? "landed" : ""}`}>
+    <h1 className="creator-desc">Hi there 😎</h1>
+  </div>
+  <div className={`profile-name ${showName ? "landed" : ""}`}>
+    <h1 className="creator-name">I am Dzenan. Welcome</h1>
+  </div>
+</div>
+
     </div>
   );
 }

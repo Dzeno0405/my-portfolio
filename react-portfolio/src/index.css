@@ -71,7 +71,7 @@ a:hover {
   transition: all 0.3s ease-in-out;
   padding: 5px 10px;
   border-radius: 5px;
-  position: relative; /* Added to support ::before positioning */
+  position: relative;
 }
 
 
@@ -95,7 +95,6 @@ a:hover {
 }
 
 .active-link {
-  font-weight: bold !important;
   color: #03a9f4 !important;
 }
 
@@ -228,7 +227,7 @@ a:hover {
 
 .info p {
   font-family: "Poppins", sans-serif;
-  font-size: 1.5rem;
+  font-size: 20px;
   line-height: 1.5;
   font-weight: 600;
   text-transform: uppercase;
@@ -256,43 +255,35 @@ a:hover {
   }
 }
 
-/* Fly-in animation for the portrait image */
-.portrait-image {
-  transform: translateY(-100vh); /* Start from above the viewport */
+/* Fly-in Animation for the Portrait Image and Popups */
+.portrait-image,
+.popups .profile,
+.popups .profile-name {
+  transform: translateY(-100vh); /* Start from above */
   opacity: 0;
-  transition: transform 2s cubic-bezier(0.68, -0.55, 0.27, 1.55),
-    opacity 2s ease-out; /* Slower, smoother transition */
+  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+              opacity 0.8s ease-out; /* Faster animation */
 }
 
-.portrait-image.landed {
+/* Final state when landed */
+.portrait-image.landed,
+.popups .profile.landed,
+.popups .profile-name.landed {
   transform: translateY(0);
   opacity: 1;
 }
 
-/* Fly-in animation for popups */
-.popups .profile,
-.popups .profile-name {
-  opacity: 0;
-  transform: translateY(50px); /* Start below */
-  transition: transform 1.8s cubic-bezier(0.68, -0.55, 0.27, 1.55),
-    opacity 1.8s ease-out; /* Slower, smoother transition */
-}
-
-/* When the popup is "landed", it should come into view */
-.popups .profile.landed,
-.popups .profile-name.landed {
-  opacity: 1;
-  transform: translateY(0); /* Land at final position */
-}
-
-/* Delay for each popup to stagger the animations */
+/* Staggered Delays for Sequencing (Adjusted to Remove Excess Lag) */
 .popups .profile {
-  transition-delay: 1s; /* Wait for the image animation to finish */
+  transition-delay: 0.1s; /* Slight delay for smoother entry */
 }
 
 .popups .profile-name {
-  transition-delay: 1.4s; /* Adjusted delay for smoother sequence */
+  transition-delay: 0.2s; /* Slightly after the profile */
 }
+
+
+
 
 /* ABOUT STYLING END */
 
@@ -435,7 +426,6 @@ a:hover {
 }
 
 .text-btn:hover {
-  transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6), 0 0 50px rgba(255, 255, 255, 0.7);
 }
 
@@ -470,26 +460,38 @@ a:hover {
   overflow: hidden;
 }
 
-.info p {
-  font-size: 15px;
+.info {
+  font-size: 12px;
   color: #ffffff;
   transition: opacity 0.5s ease, transform 0.5s ease;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Set a fixed height for the text container */
+  overflow: hidden; /* Prevents overflow of content */
 }
 
 .text-transition.fade-in {
   opacity: 1;
   transform: translateY(0);
-  pointer-events: all;
+}
+
+.text-transition.fade-out {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
 .click-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
 }
 
 .text-btn {
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 20px;
   color: #fff;
   background-color: #007bff;
   border: none;
@@ -501,6 +503,7 @@ a:hover {
 .text-btn:hover {
   background-color: #0056b3;
 }
+
 
 /* BUTTON AND LINK STYLING END */
 
@@ -538,6 +541,31 @@ a:hover {
   max-width: 600px;
   margin: 20px auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-in-out;
+
+}
+
+.skills-container.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Skill Item Animation */
+.skill-item {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .skills-container h1 {
@@ -667,13 +695,27 @@ a:hover {
 }
 
 .role-description {
-  margin-top: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  color: #d1d1d1;
-  text-align: left;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease-in-out, transform 2s ease-in-out;
+  padding: 15px; /* Add spacing inside the box */
+  border-radius: 10px; /* Rounded corners for a modern look */
+  border: 2px solid #50c878; /* Simple border that matches your theme */
+  background: #0f2027; /* Subtle background color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Light shadow for depth */
 }
+
+/* Fade-in and fade-out animations */
+.role-description.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.role-description.fade-out {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
 
 .role-description h3 {
   font-size: 1.5rem;
@@ -719,7 +761,7 @@ a:hover {
   color: #ffffff;
 }
 
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -728,7 +770,7 @@ a:hover {
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */
 
 
 

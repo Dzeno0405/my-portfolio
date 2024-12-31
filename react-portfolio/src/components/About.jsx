@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const About = () => {
   const [selectedRole, setSelectedRole] = useState(null);
+  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
   const roles = {
     Receptionist: `
@@ -14,12 +16,9 @@ const About = () => {
       Handles inquiries via phone, chat, and email. Resolves complaints, manages back-office issues, 
       and delivers proactive customer satisfaction solutions.`,
     "Project Lead Advisor": `
-  Responsible for overseeing and guiding a team of 15-20 agents, ensuring they deliver exceptional customer service. 
-  The Lead Advisor collaborates closely with the Team Manager to handle daily operational tasks, including attendance tracking, 
-  conducting quality assessments, performance reviews, providing feedback, and organizing coaching sessions. 
-  The role also involves taking on ad-hoc responsibilities to support the team and enhance their performance, 
-  ensuring a seamless customer journey and high-quality service delivery.`,
-
+      Manages a team of 15-20 agents, ensuring exceptional customer service. 
+      Works with the Team Manager on daily tasks such as attendance, quality checks, performance reviews, feedback, and coaching sessions. 
+      Also takes on ad-hoc responsibilities to support the team and enhance performance, ensuring a seamless customer journey.`,
     "Project Team Leader": `
       Oversees and supports a team of agents, ensuring exceptional service delivery. 
       Manages quality assessments, performance reviews, and coaching sessions.`,
@@ -27,6 +26,32 @@ const About = () => {
       Customizes Shopify applications using CSS, JavaScript, and React. Diagnoses technical issues 
       and ensures seamless app functionality tailored to business needs.`,
   };
+
+  const handleRoleClick = (role) => {
+    if (role === selectedRole) {
+      setIsFadingOut(true);
+      setTimeout(() => {
+        setSelectedRole(null);
+        setIsFadingOut(false);
+      }, 500);
+    } else {
+      if (selectedRole) {
+        setIsFadingOut(true);
+        setTimeout(() => {
+          setSelectedRole(role);
+          setIsFadingOut(false);
+        }, 500);
+      } else {
+        setSelectedRole(role);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (selectedRole) {
+      setTimeout(() => setIsFirstRender(false), 0); // Remove the first-render flag immediately
+    }
+  }, [selectedRole]);
 
   return (
     <div className="about-page">
@@ -50,16 +75,22 @@ const About = () => {
             <li
               key={role}
               className={role === selectedRole ? "current-position" : ""}
-              onClick={() =>
-                setSelectedRole(role === selectedRole ? null : role)
-              }
+              onClick={() => handleRoleClick(role)}
             >
               {role}
             </li>
           ))}
         </ul>
         {selectedRole && (
-          <div className="role-description">
+          <div
+            className={`role-description ${
+              isFadingOut
+                ? "fade-out"
+                : isFirstRender
+                ? ""
+                : "fade-in"
+            }`}
+          >
             <h3>{selectedRole}</h3>
             <p>{roles[selectedRole]}</p>
           </div>

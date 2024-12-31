@@ -3,16 +3,25 @@ import React, { useState } from "react";
 function Info() {
   const [stage, setStage] = useState(0); // Manage text stages
   const [vibrate, setVibrate] = useState(false);
+  const [transitionState, setTransitionState] = useState("entering"); // Track transition state
 
   const handleButtonClick = () => {
-    setStage((prevStage) => (prevStage + 1) % 3); // Cycle through stages
+    setTransitionState("exiting"); // Start exit animation
+    setTimeout(() => {
+      setStage((prevStage) => (prevStage + 1) % 3); // Update stage after exit animation
+      setTransitionState("entering"); // Start enter animation
+    }, 500); // Match CSS transition duration
     setVibrate(true); // Trigger vibration effect
     setTimeout(() => setVibrate(false), 500); // Remove vibration effect after animation
   };
 
   return (
     <div className="main-info">
-      <div className={`info ${vibrate ? "vibrate" : ""}`}>
+      <div
+        className={`info ${vibrate ? "vibrate" : ""} ${
+          transitionState === "entering" ? "fade-in" : "fade-out"
+        }`}
+      >
         {stage === 0 && (
           <p>
             Some mysteries are better left untold... but since you're curious,
@@ -21,12 +30,15 @@ function Info() {
         )}
         {stage === 1 && (
           <p className="secondary-text">
-            I'm a junior front-end developer, learning, working, and progressing every day to achieve my lifelong dream of crafting beautiful, functional websites.
+            I'm a junior front-end developer, learning, working, and progressing
+            every day to achieve my lifelong dream of crafting beautiful,
+            functional websites.
           </p>
         )}
         {stage === 2 && (
           <p className="secondary-text">
-            Are you still reading? Check the links above – let's connect and create something amazing!
+            Are you still reading? Check the links above – let's connect and
+            create something amazing!
           </p>
         )}
       </div>
