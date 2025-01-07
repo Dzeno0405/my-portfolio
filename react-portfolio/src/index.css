@@ -916,6 +916,8 @@ a:hover {
 
 /* PROJECTS START */
 
+
+
 .projects-page {
   position: relative;
   height: 100vh;
@@ -937,8 +939,7 @@ a:hover {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 10;
+  z-index: 11;
 }
 
 .loading-overlay h1 {
@@ -966,6 +967,66 @@ a:hover {
   }
 }
 
+/* Project Link Section */
+.project-link {
+  text-align: center;
+  margin-top: 30px;
+  z-index: 5; /* Ensure it is above the loading overlay */
+}
+
+.project-link-btn {
+  background: linear-gradient(135deg, #50c878, #0288d1);
+  color: #ffffff;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-radius: 25px;
+  display: inline-block;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.project-link-btn:hover {
+  background: linear-gradient(135deg, #0288d1, #50c878);
+  transform: translateY(-3px);
+}
+
+
 
 /* PROJECTS END */
 
+
+
+.app {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background logo that is visible behind everything */
+.app-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 3rem;
+  z-index: -1; /* Ensure it's behind all other content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-background-logo {
+  height: 150px; /* Adjust the size of the logo */
+  width: auto;
+  opacity: 0.1; /* Make it faint */
+}
+
+@media (max-width: 992px) {
+  .app-background {
+    bottom: 10rem; /* Adjust the bottom margin if needed */
+  }
+
+  .app-background-logo {
+    height: 120px; /* Adjust the size for smaller screens */
+    opacity: 0.1; /* Keep it faint */
+  }
+}

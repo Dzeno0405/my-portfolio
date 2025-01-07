@@ -1,12 +1,18 @@
 import React from "react";
 
-
 const Projects = () => {
   return (
     <div className="projects-page">
-      <div className="loading-overlay">
-        <h1>TO BE ADDED</h1>
-        <div className="loading-animation"></div>
+      <div className="project-link">
+        <h2>Keyboard Project</h2>
+        <a
+          href="https://dzenan-keyboard.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="project-link-btn"
+        >
+          View Keyboard Project
+        </a>
       </div>
     </div>
   );

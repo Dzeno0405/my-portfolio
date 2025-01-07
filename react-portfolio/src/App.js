@@ -34,6 +34,9 @@ function App() {
 
   return (
     <div className="app">
+      <div className="app-background">
+        <img src="/logo.png" alt="Logo" className="app-background-logo" />
+      </div>
       <Navbar />
       <Routes>
         <Route

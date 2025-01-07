@@ -24,7 +24,7 @@ const Future = () => {
           </p>
         </div>
         <div className="future-item">
-          <h2>Keyboard app</h2>
+          <h2>Keyboard app - Done ✅</h2>
           <p>
             I will try to develop a basic keyboard app that will allow users to either type with their keyboard or click on the page to type something.
           </p>
