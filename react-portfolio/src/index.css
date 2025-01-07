@@ -76,7 +76,6 @@ a:hover {
   font-size: 18px;
   font-family: "Poppins", sans-serif;
   transition: all 0.3s ease-in-out;
-  padding: 5px 10px;
   border-radius: 5px;
   position: relative;
 }
@@ -105,9 +104,8 @@ a:hover {
 }
 
 /* Media query for screens smaller than 360px */
-@media (max-width: 400px) {
+@media (max-width: 350px) {
   .navbar {
-    padding: 10px 15px; /* Reduced padding for smaller screens */
     flex-direction: column; /* Stack items vertically */
   }
 
@@ -118,7 +116,6 @@ a:hover {
 
   .navbar ul li a {
     font-size: 16px; /* Slightly smaller font for better fit */
-    padding: 8px 12px; /* Adjusted padding */
   }
 }
 
