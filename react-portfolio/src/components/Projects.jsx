@@ -6,7 +6,7 @@ const Projects = () => {
       <div className="project-link">
         <h2>Keyboard Project</h2>
         <a
-          href="https://dzenan-keyboard.netlify.app/"
+          href="https://dzeno-keyboard.netlify.app/"
           target="_blank"
           rel="noopener noreferrer"
           className="project-link-btn"
