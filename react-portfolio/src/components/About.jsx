@@ -1,117 +1,72 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+
+const ROLES = {
+  Receptionist:
+    "Responsible for guest check-in, check-out, and billing. Ensured high-quality assistance and provided information to international guests during their stay.",
+  "Tour Guide":
+    "Provided engaging tours focused on cultural and historical landmarks. Delivered exceptional customer experiences to groups of varying sizes.",
+  "Customer Support Agent":
+    "Handled inquiries via phone, chat, and email. Resolved complaints, managed back-office issues, and delivered proactive customer satisfaction solutions.",
+  "Project Lead Advisor":
+    "Managed a team of 15–20 agents, ensuring exceptional customer service. Worked with the Team Manager on attendance, quality checks, performance reviews, feedback, and coaching sessions.",
+  "Project Team Leader":
+    "Oversaw and supported a team of agents, ensuring exceptional service delivery. Managed quality assessments, performance reviews, and coaching sessions.",
+  "Support Developer":
+    "Customises Shopify applications using CSS, JavaScript, and React. Diagnoses technical issues and ensures seamless app functionality tailored to business needs.",
+};
 
 const About = () => {
-  const [selectedRole, setSelectedRole] = useState(null);
-  const [isFadingOut, setIsFadingOut] = useState(false);
-  const [isFirstRender, setIsFirstRender] = useState(true);
+  const [selected, setSelected] = useState(null);
 
-  const roles = {
-    Receptionist: `
-      Responsible for guest check-in, check-out, and billing. 
-      Ensures high-quality assistance and provides information to international guests during their stay.`,
-    "Tour Guide": `
-      Provided engaging tours with a focus on cultural and historical landmarks. 
-      Delivered exceptional customer experiences to groups of varying sizes.`,
-    "Customer Support Agent": `
-      Handles inquiries via phone, chat, and email. Resolves complaints, manages back-office issues, 
-      and delivers proactive customer satisfaction solutions.`,
-    "Project Lead Advisor": `
-      Manages a team of 15-20 agents, ensuring exceptional customer service. 
-      Works with the Team Manager on daily tasks such as attendance, quality checks, performance reviews, feedback, and coaching sessions. 
-      Also takes on ad-hoc responsibilities to support the team and enhance performance, ensuring a seamless customer journey.`,
-    "Project Team Leader": `
-      Oversees and supports a team of agents, ensuring exceptional service delivery. 
-      Manages quality assessments, performance reviews, and coaching sessions.`,
-    "Support Developer - Current": `
-      Customizes Shopify applications using CSS, JavaScript, and React. Diagnoses technical issues 
-      and ensures seamless app functionality tailored to business needs.`,
+  const handleClick = (role) => {
+    setSelected(selected === role ? null : role);
   };
-
-  const handleRoleClick = (role) => {
-    if (role === selectedRole) {
-      setIsFadingOut(true);
-      setTimeout(() => {
-        setSelectedRole(null);
-        setIsFadingOut(false);
-      }, 500);
-    } else {
-      if (selectedRole) {
-        setIsFadingOut(true);
-        setTimeout(() => {
-          setSelectedRole(role);
-          setIsFadingOut(false);
-        }, 500);
-      } else {
-        setSelectedRole(role);
-      }
-    }
-  };
-
-  useEffect(() => {
-    if (selectedRole) {
-      setTimeout(() => setIsFirstRender(false), 0); // Remove the first-render flag immediately
-    }
-  }, [selectedRole]);
 
   return (
     <div className="about-page">
-      <h1>About Me</h1>
-      <p>
-        Hello! My name is <strong>Dzenan Polutak</strong>, and I am 28 years
-        old. I currently work as a <strong>Support Developer</strong>,
-        specializing in Shopify applications. My skills continue to grow as I
-        work diligently toward becoming a full-fledged Front-End Developer.
-      </p>
-      <p>
-        Over the years, I’ve gained valuable experience in a variety of roles,
-        allowing me to build a diverse skill set. Feel free to explore my skills
-        by clicking on <strong>Skills</strong> in the navigation bar.
+      <h1>
+        About <span>Me</span>
+      </h1>
+      <p className="about-intro">
+        Hi — I'm <strong>Dženan Polutak</strong>, a junior full-stack developer (in progress)
+        with a focus on React, Python, and AI-powered web apps. By day I work
+        as a Support Developer building and customising Shopify applications;
+        outside of that I build full-stack projects — from FastAPI backends and
+        Supabase databases to React frontends and OpenAI integrations. I've
+        worked across multiple industries, which gives me a unique blend of
+        technical skills and people-first thinking.
       </p>
 
-      <div className="positions">
-        <h2>My Career Journey</h2>
-        <ul>
-          {Object.keys(roles).map((role) => (
-            <li
-              key={role}
-              className={role === selectedRole ? "current-position" : ""}
-              onClick={() => handleRoleClick(role)}
-            >
-              {role}
-            </li>
-          ))}
-        </ul>
-        {selectedRole && (
+      <p className="about-section-title">Career Journey</p>
+      <div className="career-list">
+        {Object.keys(ROLES).map((role) => (
           <div
-            className={`role-description ${
-              isFadingOut
-                ? "fade-out"
-                : isFirstRender
-                ? ""
-                : "fade-in"
-            }`}
+            key={role}
+            className={`career-item${selected === role ? " active" : ""}`}
+            onClick={() => handleClick(role)}
           >
-            <h3>{selectedRole}</h3>
-            <p>{roles[selectedRole]}</p>
+            {role === "Support Developer" ? `${role} — Current` : role}
           </div>
-        )}
+        ))}
       </div>
 
-      <div className="future-plans">
-        <h2>Future Plans</h2>
-        <p>
-          I am actively working hard to become a dedicated Front-End Developer.
-          I am passionate about improving my skills every day, tackling new
-          challenges, and growing in the field of web development.
-        </p>
-      </div>
+      {selected && (
+        <div className="career-description">
+          <h3>{selected}</h3>
+          <p>{ROLES[selected]}</p>
+        </div>
+      )}
 
-      <div className="cv-download">
-        <button className="download-btn">
-          <a href="/Dzenan_Polutak_CV.docx" download>
-            Download My CV
-          </a>
-        </button>
+      <div className="cv-section">
+        <p className="about-section-title">Resume</p>
+        <a
+          href="/Dzenan_Polutak_CV.docx"
+          download
+          className="btn-primary"
+          style={{ display: "inline-flex" }}
+        >
+          Download CV
+        </a>
       </div>
     </div>
   );

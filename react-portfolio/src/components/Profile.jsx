@@ -1,41 +1,81 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import portrait from "../img/meme.jpg";
 
-function ProfilePortrait() {
-  const [imageLanded, setImageLanded] = useState(false);
-  const [showWelcome, setShowWelcome] = useState(false);
-  const [showName, setShowName] = useState(false);
+const ROLES = [
+  "Support Developer",
+  "Junior Full-Stack Dev (in progress)",
+  "React Developer",
+  "Shopify Developer",
+];
+
+function Profile() {
+  const [displayText, setDisplayText] = useState("");
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    // Start image animation
-    const timer1 = setTimeout(() => setImageLanded(true), 200); // Image lands after 1 second
-    const timer2 = setTimeout(() => setShowWelcome(true), 2500); // Show welcome popup
-    const timer3 = setTimeout(() => setShowName(true), 3500); // Show name popup
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
-    };
-  }, []);
+    const current = ROLES[roleIndex];
+    let timeout;
+
+    if (!isDeleting && displayText === current) {
+      timeout = setTimeout(() => setIsDeleting(true), 1800);
+    } else if (isDeleting && displayText === "") {
+      setIsDeleting(false);
+      setRoleIndex((i) => (i + 1) % ROLES.length);
+    } else {
+      const speed = isDeleting ? 45 : 90;
+      timeout = setTimeout(() => {
+        setDisplayText(
+          isDeleting
+            ? current.slice(0, displayText.length - 1)
+            : current.slice(0, displayText.length + 1)
+        );
+      }, speed);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, roleIndex]);
 
   return (
-    <div className="profile-portrait-container">
-      <div
-        className={`portrait-image ${imageLanded ? "landed" : "flying"}`}
-      >
-        <img src={portrait} alt="Your Portrait" className="portrait" />
+    <section className="hero">
+      <div className="hero-text">
+        <span className="hero-greeting">Hello, World!</span>
+        <h1 className="hero-name">Dženan Polutak</h1>
+        <p className="hero-role">
+          {displayText}
+          <span className="cursor" aria-hidden="true" />
+        </p>
+        <p className="hero-bio">
+          I build fast, beautiful web experiences. Currently working as a
+          Support Developer specialising in Shopify — passionate about clean
+          code, great UI, and shipping things that actually work.
+        </p>
+        <div className="hero-cta">
+          <Link to="/projects" className="btn-primary">
+            View My Work
+          </Link>
+          <a
+            href="/Dzenan_Polutak_CV.docx"
+            download
+            className="btn-secondary"
+          >
+            Download CV
+          </a>
+        </div>
       </div>
-      <div className="popups">
-  <div className={`profile ${showWelcome ? "landed" : ""}`}>
-    <h1 className="creator-desc">Hi there 😎</h1>
-  </div>
-  <div className={`profile-name ${showName ? "landed" : ""}`}>
-    <h1 className="creator-name">I am Dzenan. Welcome</h1>
-  </div>
-</div>
 
-    </div>
+      <div className="hero-image">
+        <img src={portrait} alt="Dženan Polutak" className="portrait" />
+      </div>
+
+      <div className="scroll-hint" aria-hidden="true">
+        <div className="scroll-hint-dot" />
+        <div className="scroll-hint-dot" />
+        <div className="scroll-hint-dot" />
+      </div>
+    </section>
   );
 }
 
-export default ProfilePortrait;
+export default Profile;

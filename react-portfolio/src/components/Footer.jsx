@@ -1,41 +1,60 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faInstagram, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGithub,
+  faLinkedin,
+  faInstagram,
+  faFacebook,
+} from "@fortawesome/free-brands-svg-icons";
 
-function Footer (){
+const SOCIALS = [
+  {
+    icon: faGithub,
+    href: "https://github.com/dzeno0405",
+    label: "GitHub",
+  },
+  {
+    icon: faLinkedin,
+    href: "https://www.linkedin.com/in/dzenan-polutak-28098b168/",
+    label: "LinkedIn",
+  },
+  {
+    icon: faInstagram,
+    href: "https://www.instagram.com/dzeno0405/",
+    label: "Instagram",
+  },
+  {
+    icon: faFacebook,
+    href: "https://www.facebook.com/dpolutak/",
+    label: "Facebook",
+  },
+];
+
+function Footer() {
   return (
-    <footer className='footer'>
+    <footer className="footer">
       <div className="footer-content">
         <div className="footer-left">
-          &copy; Dzenan Polutak 2024 All rights reserved
+          &copy; {new Date().getFullYear()}{" "}
+          <strong>Dženan Polutak</strong>. All rights reserved.
         </div>
         <div className="footer-right">
-          <ul>
-            <li>
-              <a href="https://www.facebook.com/dpolutak/" target="Meta">
-                <FontAwesomeIcon icon={faFacebook} />
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/dzeno0405/" target="Instagram">
-                <FontAwesomeIcon icon={faInstagram} />
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/dzeno0405" target="Github">
-                <FontAwesomeIcon icon={faGithub} />
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/dzenan-polutak-28098b168/" target="Linkedin">
-                <FontAwesomeIcon icon={faLinkedin} />
-              </a>
-            </li>
-          </ul>
+          {SOCIALS.map(({ icon, href, label }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social"
+              aria-label={label}
+            >
+              <FontAwesomeIcon icon={icon} />
+            </a>
+          ))}
         </div>
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;
