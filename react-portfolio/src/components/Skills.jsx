@@ -11,7 +11,8 @@ import {
   FaPython,
   FaRobot,
 } from "react-icons/fa";
-import { SiTypescript, SiVite, SiSupabase, SiFirebase, SiFastapi, SiOpenai } from "react-icons/si";
+import { SiVite, SiSupabase, SiFirebase, SiFastapi, SiOpenai } from "react-icons/si";
+import { BsFiletypeJsx } from "react-icons/bs";
 import { GiBrain } from "react-icons/gi";
 
 const CATEGORIES = [
@@ -22,7 +23,7 @@ const CATEGORIES = [
       { name: "CSS3",       level: 90, icon: <FaCss3Alt   color="#1572B6" size={20} /> },
       { name: "JavaScript", level: 75, icon: <FaJs        color="#F7DF1E" size={20} /> },
       { name: "React",      level: 72, icon: <FaReact     color="#61DAFB" size={20} /> },
-      { name: "TypeScript", level: 42, icon: <SiTypescript color="#3178C6" size={20} /> },
+      { name: "JSX",        level: 80, icon: <BsFiletypeJsx color="#61DAFB" size={20} /> },
       { name: "Bootstrap",  level: 62, icon: <FaBootstrap color="#7952B3" size={20} /> },
     ],
   },
@@ -30,10 +31,10 @@ const CATEGORIES = [
     label: "Backend & Cloud",
     skills: [
       { name: "Node.js",  level: 50, icon: <FaNodeJs   color="#339933" size={20} /> },
-      { name: "Python",   level: 60, icon: <FaPython   color="#3776AB" size={20} /> },
+      { name: "Python",   level: 50, icon: <FaPython   color="#3776AB" size={20} /> },
       { name: "FastAPI",  level: 55, icon: <SiFastapi  color="#009688" size={20} /> },
       { name: "Supabase", level: 50, icon: <SiSupabase color="#3ECF8E" size={20} /> },
-      { name: "Firebase", level: 45, icon: <SiFirebase color="#FFCA28" size={20} /> },
+      { name: "Firebase", level: 50, icon: <SiFirebase color="#FFCA28" size={20} /> },
     ],
   },
   {
@@ -47,8 +48,8 @@ const CATEGORIES = [
   {
     label: "Tools & Platforms",
     skills: [
-      { name: "Git",     level: 75, icon: <FaGitAlt  color="#F05032" size={20} /> },
-      { name: "Shopify", level: 72, icon: <FaShopify color="#96BF48" size={20} /> },
+      { name: "Git",     level: 60, icon: <FaGitAlt  color="#F05032" size={20} /> },
+      { name: "Shopify", level: 85, icon: <FaShopify color="#96BF48" size={20} /> },
       { name: "Vite",    level: 68, icon: <SiVite    color="#646CFF" size={20} /> },
     ],
   },

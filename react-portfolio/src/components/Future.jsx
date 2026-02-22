@@ -1,33 +1,36 @@
 import React from "react";
+import { GiCrossedSwords } from "react-icons/gi";
+import { MdKeyboard, MdCake } from "react-icons/md";
+import { FaRobot } from "react-icons/fa";
 
 const PLANS = [
   {
     status: "done",
-    emoji: "✅",
+    icon: <GiCrossedSwords color="#34d399" size={20} />,
     title: "Airsoft Club Website",
     badge: "shipped",
     desc: "A fully functional site for ASK Rendzeri, featuring an activities feed, photo gallery with Swiper slideshows, contact form via EmailJS, and smooth animated page transitions.",
   },
   {
     status: "done",
-    emoji: "✅",
+    icon: <MdKeyboard color="#34d399" size={22} />,
     title: "Virtual Keyboard App",
     badge: "shipped",
     desc: "A browser-based keyboard supporting both physical keystrokes and on-screen clicks, with orientation detection and a clean text display.",
   },
   {
     status: "done",
-    emoji: "🤖",
+    icon: <FaRobot color="#a78bfa" size={20} />,
     title: "AI Email Classifier & Auto-Responder",
     badge: "new",
-    desc: "An intelligent email processing tool powered by a FastAPI backend and a React + MUI frontend. Classifies emails as Support, Sales or Feedback and generates contextual auto-responses, with a live cost estimator.",
+    desc: "An intelligent email processing tool powered by a FastAPI backend and a React + MUI frontend. Classifies emails as Support, Sales or Feedback and generates contextual auto-responses, with a live cost estimator. Note: the API runs on ngrok, so it won't be active for visitors — but the idea is there and it works great when the API is live.",
   },
   {
     status: "upcoming",
-    emoji: "🎂",
+    icon: <MdCake color="#03a9f4" size={22} />,
     title: "Birthday Venue Booking App",
     badge: "soon",
-    desc: "A full-stack booking platform for birthday venues — browse venues, check real-time availability, reserve a date, and manage your booking end-to-end. Built with React, Node.js and a proper database backend.",
+    desc: "A full-stack booking platform for birthday venues — browse venues, check real-time availability, reserve a date, and manage your booking end-to-end. Built with React, JSX and a proper database backend.",
   },
 ];
 
@@ -46,7 +49,7 @@ const Future = () => {
         {PLANS.map((plan, i) => (
           <div key={i} className="future-card">
             <div className={`future-status-icon ${plan.status}`}>
-              {plan.emoji}
+              {plan.icon}
             </div>
             <div className="future-card-body">
               <div className="future-card-title">

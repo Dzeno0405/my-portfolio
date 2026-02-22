@@ -1,32 +1,35 @@
 import React from "react";
+import { GiCrossedSwords } from "react-icons/gi";
+import { MdKeyboard, MdCake } from "react-icons/md";
+import { FaRobot } from "react-icons/fa";
 
 const PROJECTS = [
   {
-    icon: "⌨️",
+    icon: <MdKeyboard color="#03a9f4" size={36} />,
     title: "Virtual Keyboard App",
     desc: "A browser-based virtual keyboard supporting both physical keystrokes and on-screen clicks. Features orientation detection — switches to a rotation prompt in portrait mode.",
     tech: ["React", "Vite", "CSS"],
     liveUrl: "https://dzeno-keyboard.netlify.app/",
   },
   {
-    icon: "🪖",
+    icon: <GiCrossedSwords color="#4ade80" size={36} />,
     title: "ASK Rendzeri",
     desc: "Full website for an airsoft club featuring an activities feed, a virtualized image gallery with Swiper slideshows, an EmailJS contact form, and animated page transitions.",
     tech: ["React", "Vite", "React Router", "Swiper", "EmailJS"],
     liveUrl: "https://askrendzeri.netlify.app/",
   },
   {
-    icon: "🤖",
+    icon: <FaRobot color="#a78bfa" size={34} />,
     title: "AI Email Classifier",
-    desc: "Paste emails and have them automatically classified as Support, Sales or Feedback using a FastAPI backend. Generates contextual auto-responses and tracks processing costs in real time.",
+    desc: "Paste emails and have them automatically classified as Support, Sales or Feedback using a FastAPI backend. Generates contextual auto-responses and tracks processing costs in real time. Note: the API runs on ngrok and won't be active for visitors — but it works great when the API is live.",
     tech: ["React", "Vite", "MUI v7", "FastAPI", "Python"],
     liveUrl: "https://dzeno-secar.netlify.app/",
   },
   {
-    icon: "🎂",
+    icon: <MdCake color="#fb923c" size={36} />,
     title: "Birthday Venue Booking App",
     desc: "A full-stack booking platform for birthday venues — browse venues, check real-time availability, reserve a date, and manage your booking end-to-end.",
-    tech: ["React", "Node.js", "TypeScript"],
+    tech: ["React", "Node.js", "JSX"],
     liveUrl: null,
     comingSoon: true,
   },
